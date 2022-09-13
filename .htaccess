@@ -1,0 +1,18 @@
+# Set Site Error
+ErrorDocument 400 /admin/error/400.php
+ErrorDocument 401 /admin/error/401.php
+ErrorDocument 403 /admin/error/403.php
+ErrorDocument 404 /admin/error/404.php
+ErrorDocument 503 /admin/error/503.php
+
+# Disable directory Browsing
+Options All -Indexes
+
+# Redirect To Https
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+
+# Remove Extension .php, .html
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
